@@ -1,6 +1,10 @@
 
 import React from "react";
 import { NavLink, useLocation, } from "react-router-dom";
+import { useAuth } from "../../../hooks/useAuth";
+import SignIn from "../../auth/SignIn";
+import SignUp from "../../auth/SignUp";
+import useDisclosure from "../../../hooks/useDisclosure";
 import { NavItem } from "./types";
 
 // Массив пунктов меню
@@ -10,6 +14,17 @@ const navItems: NavItem[] = [
 ];
 
 const Header: React.FC = () => {
+    // Кастомный хук для проверки данных пользователя, выхода
+    const { user, onLogout } = useAuth();
+
+    console.log(user)
+
+    // Модалка для входа
+    const signIn = useDisclosure();
+
+    // Модалка для регистрации
+    const signUp = useDisclosure();
+
     // Текущее местоположение из URL
     const location = useLocation();
 
@@ -53,22 +68,40 @@ const Header: React.FC = () => {
                         </div>
                     </nav>
                     <div id="buttons-wrapper" className="inline-flex items-center">
-                        <button
-                            type="button"
-                            className="border-2 text-indigo-500 border-indigo-500 font-medium py-2 px-4 rounded"
-                        >
-                            Login
-                        </button>
-                        <button
-                            type="button"
-                            className="ml-3 border-2 border-indigo-500 bg-indigo-500 text-white font-medium py-2 px-4 rounded"
+                        {!user ? (
+                            <>
+                                <button
+                                    type="button"
+                                    className="border-2 text-indigo-500 border-indigo-500 font-medium py-2 px-4 rounded"
+                                    onClick={signIn?.onOpen}
+                                >
+                                    Login
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={signUp?.onOpen}
+                                    className="ml-3 border-2 border-indigo-500 bg-indigo-500 text-white font-medium py-2 px-4 rounded"
 
-                        >
-                            Register
-                        </button>
+                                >
+                                    Register
+                                </button>
+                            </>
+                        ) : (
+                            <button
+                                type="button"
+                                className="ml-3 border-2 border-indigo-500 bg-indigo-500 text-white font-medium py-2 px-4 rounded"
+                                onClick={onLogout}
+                            >
+                                Logout
+                            </button>
+                        )}
+
                     </div>
                 </div>
             </div>
+
+            <SignIn isOpen={signIn.isOpen} onClose={signIn.onClose} />
+            <SignUp isOpen={signUp?.isOpen} onClose={signUp?.onClose} />
         </header>
     );
 };
