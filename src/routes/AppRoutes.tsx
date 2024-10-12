@@ -3,13 +3,16 @@ import { Routes, Route } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../components/pages/Home";
 import Weather from "../components/pages/Weather";
+import Forbidden from "../components/pages/Forbidden";
+import PrivateRoute from "../routes/PrivateRoute";
 import { RouteItem } from "./types";
 
 
 // Массив роутов приложения
 const routes: RouteItem[] = [
     { path: "/", element: <Home /> },
-    { path: "weather", element: <Weather /> }
+    { path: "weather", element: <PrivateRoute element={<Weather />} /> },
+    { path: "forbidden", element: <Forbidden /> }
 ];
 
 // Рекурсивно отображает роуты и дочерние роуты.

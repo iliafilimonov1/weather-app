@@ -32,7 +32,7 @@ const Header: React.FC = () => {
     const isActiveLink = (path: string): boolean => {
         return (
             location?.pathname === path ||
-            (path === "/cards" && location?.pathname?.startsWith("/cards"))
+            (path === "/weather" && location?.pathname?.startsWith("/weather"))
         );
     };
 
@@ -49,21 +49,19 @@ const Header: React.FC = () => {
                             />
                         </NavLink>
                         <div className="hidden sm:ml-8 sm:flex sm:space-x-8">
-                            {navItems?.length > 0 && navItems.map((item) => {
-                                return (
-                                    <NavLink
-                                        to={item?.path}
-                                        key={item?.path}
-                                        className={`text-zinc-800 inline-flex items-center px-1 pt-1 text-sm ${isActiveLink(item?.path)
-                                            ? "text-indigo-500 border-b-2 border-indigo-500"
-                                            : "hover:text-indigo-500"
-                                            }`}
-                                    >
-                                        {item?.name}
-                                        {item?.icon}
-                                    </NavLink>
-                                );
-                            })}
+                            {user && navItems?.length > 0 && navItems?.map((item) => (
+                                <NavLink
+                                    to={item?.path}
+                                    key={item?.path}
+                                    className={`text-zinc-800 inline-flex items-center px-1 pt-1 text-sm ${isActiveLink(item?.path)
+                                        ? "text-indigo-500 border-b-2 border-indigo-500"
+                                        : "hover:text-indigo-500"
+                                        }`}
+                                >
+                                    {item?.name}
+                                    {item?.icon}
+                                </NavLink>
+                            ))}
 
                         </div>
                     </nav>
