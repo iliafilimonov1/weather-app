@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    /* Основные опции */
+    "incremental": true, // Включить инкрементальную компиляцию
+    "target": "es5", // Версию языка JavaScript на выходе
+    "module": "commonjs", // Тип модуля для генерации кода
+    "lib": ["ESNext", "DOM", "DOM.Iterable"], // Библиотеки для окружений
+    "allowJs": true, // Компиляция файлов JavaScript
+    "checkJs": true, // Сообщать об ошибках в файлах JavaScript
+    "jsx": "react", // Указывать тип JSX для React
+    "declaration": true, // Создавать файлы деклараций TypeScript
+    "sourceMap": true, // Файлы карт исходников
+    "outDir": "./lib", // Каталог для выходных файлов
+    "strict": true, // Включить все строгие проверки
+
+    /* Дополнительные проверки */
+    "noUnusedLocals": true, // Сообщать о неиспользуемых локальных переменных
+    "noUnusedParameters": true, // Сообщать о неиспользуемых параметрах функций
+    "noImplicitReturns": true, // Сообщать о функциях, которые могут не возвращать значение
+    "noFallthroughCasesInSwitch": true, // Сообщать о пропуске операторов в switch
+    "allowSyntheticDefaultImports": true, // Разрешить синтетический импорт по умолчанию
+    "strictNullChecks": true, // Проверять на null и undefined
+    "strictFunctionTypes": true, // Строгая проверка типов функций
+    "strictPropertyInitialization": true, // Проверять инициализацию свойств
+    "noImplicitAny": true, // Запрещать неявное использование типа any
+    "noImplicitThis": true, // Запрещать неявное использование this
+    "alwaysStrict": true, // Принудительное использование строгого режима
+
+    /* Опции разрешения модулей */
+    "moduleResolution": "node", // Способ разрешения модулей
+    "esModuleInterop": true,
+
+    /* Расширенные опции */
+    "forceConsistentCasingInFileNames": true, // Одинаковый регистр имен файлов
+    "resolveJsonModule": true, // Разрешить импорт JSON модулей
+    "pretty": false, // Форматировать вывод, чтобы он был более читаемым
+    "skipLibCheck": true // Пропуск проверки типов в файлах библиотек
+  },
+  "include": ["src/"], // Каталог для компиляции
+  "compileOnSave": false // Не компилировать при сохранении
+}
