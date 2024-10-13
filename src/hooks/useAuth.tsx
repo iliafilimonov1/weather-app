@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { generateTokens } from '../utils/generateTokens';
+import { useNavigate } from "react-router-dom";
 
 // Данные пользователя
 interface User {
@@ -28,6 +29,8 @@ interface AuthProviderProps {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+    const navigate = useNavigate();
+
     // Данные об аутентификации пользователя
     const [user, setUser] = useState<User | null>(null);
 
@@ -73,6 +76,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             localStorage?.setItem("authData", JSON?.stringify(authData));
             
             setUser(createdUser);
+            navigate("/home");
         } catch (error) {
             console.error("Ошибка при регистрации пользователя:", error);
         }
@@ -105,6 +109,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
                     localStorage?.setItem("authData", JSON?.stringify(authData));
                     setUser(user);
+                    navigate("/home");
                 } else {
                     console.error("User ID is missing.");
                 }
@@ -120,6 +125,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const onLogout = () => {
         setUser(null);
         localStorage?.removeItem("authData");
+        navigate("/");
     };
 
     const contextValue = { user, isLoading, onRegister, onLogin, onLogout };

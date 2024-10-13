@@ -7,9 +7,9 @@ import SignUp from "../../auth/SignUp";
 import useDisclosure from "../../../hooks/useDisclosure";
 import { NavItem } from "./types";
 
-// Пункты меню
+// Массив пунктов меню
 const navItems: NavItem[] = [
-    { name: "Home", path: "/" },
+    { name: "Home", path: "/home" },
     { name: "Weather", path: "/weather" },
 ];
 
