@@ -1,16 +1,16 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
-import Home from "../components/pages/Home";
 import Weather from "../components/pages/Weather";
 import Forbidden from "../components/pages/Forbidden";
 import PrivateRoute from "../routes/PrivateRoute";
 import { RouteItem } from "./types";
-
+import Home from "../components/pages/Home";
 
 // Массив роутов приложения
 const routes: RouteItem[] = [
-    { path: "/", element: <Home /> },
+    { path: "/", element: <MainLayout /> },
+    { path: "/home", element: <PrivateRoute element={<Home />} /> },
     { path: "weather", element: <PrivateRoute element={<Weather />} /> },
     { path: "forbidden", element: <Forbidden /> }
 ];

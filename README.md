@@ -25,3 +25,4 @@ This project follows a custom structure that combines the following:
 - React Router
 - Zustand
 - Vite
+- Chart.js

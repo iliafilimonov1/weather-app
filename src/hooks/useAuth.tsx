@@ -1,14 +1,14 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { generateTokens } from '../utils/generateTokens';
 
-// Типы для данных пользователя
+// Данные пользователя
 interface User {
     id?: string;
     login: string;
     password: string;
 }
 
-// Тип для контекста аутентификации
+// Контекст аутентификации
 interface AuthContextType {
     user: User | null;
     /* Загрузка данных */
@@ -39,7 +39,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
         if (authDataFromLocalStorage) {
             const authData = JSON?.parse(authDataFromLocalStorage);
-            // Устанавливаем пользователя из authData
             setUser(authData?.user);
         }
         setIsLoading(false);
@@ -72,6 +71,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             };
 
             localStorage?.setItem("authData", JSON?.stringify(authData));
+            
             setUser(createdUser);
         } catch (error) {
             console.error("Ошибка при регистрации пользователя:", error);

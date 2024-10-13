@@ -1,5 +1,5 @@
 import validateForm from "../utils/validators";
-import React, { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent } from "react";
 
 // Типы для значений формы
 export interface FormValues {

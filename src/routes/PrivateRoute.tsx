@@ -2,7 +2,11 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
-const PrivateRoute = ({ element }) => {
+interface PrivateRouteProps {
+  element: React.ReactNode;
+}
+
+const PrivateRoute: React.FC<PrivateRouteProps> = ({ element }) => {
   const { user, isLoading } = useAuth();
 
   if (isLoading) {

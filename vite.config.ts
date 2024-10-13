@@ -6,10 +6,10 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@assets": path.resolve(__dirname, "./assets"), // Алиас к папке assets
-      "@components": path.resolve(__dirname, "src/components"), // Общие компоненты
-      "@ui": path.resolve(__dirname, "src/components/ui"), // UI компоненты
-      "@pages": path.resolve(__dirname, "src/pages"), // Страницы приложения
+      "@assets": path.resolve(__dirname, "./assets"),
+      "@components": path.resolve(__dirname, "src/components"),
+      "@ui": path.resolve(__dirname, "src/components/ui"),
+      "@pages": path.resolve(__dirname, "src/pages"),
     },
   },
 });
