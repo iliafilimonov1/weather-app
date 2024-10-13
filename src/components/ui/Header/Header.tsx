@@ -7,7 +7,7 @@ import SignUp from "../../auth/SignUp";
 import useDisclosure from "../../../hooks/useDisclosure";
 import { NavItem } from "./types";
 
-// Массив пунктов меню
+// Пункты меню
 const navItems: NavItem[] = [
     { name: "Home", path: "/" },
     { name: "Weather", path: "/weather" },
@@ -16,8 +16,6 @@ const navItems: NavItem[] = [
 const Header: React.FC = () => {
     // Кастомный хук для проверки данных пользователя, выхода
     const { user, onLogout } = useAuth();
-
-    console.log(user)
 
     // Модалка для входа
     const signIn = useDisclosure();
